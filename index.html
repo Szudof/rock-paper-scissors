@@ -1,1 +1,62 @@
-"" 
+!<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>"skała papier nożyczki"</title>
+    </head>
+
+    <body>
+        <script>
+            function computerPlay(){
+                let possibleMoves = ["rock", "paper", "scissors"]
+                return possibleMoves[Math.floor(Math.random() * 3)];
+            }
+
+            function playerPlay(){
+                let chosenMove;
+                alert("Choose your move (rock, paper or scissors)");
+                return prompt(chosenMove);
+                
+            }
+
+            function playRound(playerSelection, computerSelection){
+
+                console.log(computerSelection);
+                console.log(playerSelection);
+
+                if(playerSelection == computerSelection){
+                    return "Draw"
+                }
+                
+                if (playerSelection == "rock") {
+                    if (computerSelection == "scissors") {
+                        return "Player wins!"
+                    }
+                    else
+                        return "Computer wins"
+                }
+                else if (playerSelection == "paper") {
+                    if (computerSelection == "scissors") {
+                        return "Computer wins"
+                    }
+                    else
+                        return "Player wins!"
+                }
+                else if (playerSelection == "scissors") {
+                    if (computerSelection == "paper") {
+                        return "Player wins!"
+                    }
+                    else
+                        return "Computer wins"
+                }
+
+                
+            }
+            
+            
+            console.log(playRound(playerPlay(), computerPlay()));
+
+            
+        </script>
+    </body>
+</html>
