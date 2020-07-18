@@ -7,27 +7,39 @@
 
     <body>
         <script>
-            function computerPlay(){
-                let possibleMoves = ["rock", "paper", "scissors"]
-                return possibleMoves[Math.floor(Math.random() * 3)];
-            }
-
-            function playerPlay(){
-                let chosenMove;
-                alert("Choose your move (rock, paper or scissors)");
-                return prompt(chosenMove);
+            
+            function game() 
+            {
+                let playerScore = 0;
+                let computerScore = 0;
                 
+                let i;
+                while(playerScore != 3 && computerScore != 3) //Best of 5
+                {
+                    if(playRound(playerPlay(), computerPlay()) =="Player wins!")
+                    {
+                        playerScore++;
+                    }
+                    else{
+                        computerScore++;
+                    }
+                    
+                    /*console.log("Computer score: " + computerScore);
+                    console.log("Player score: " + playerScore);*/
+                }
+             
+                declareWinner(computerScore,playerScore);
             }
 
             function playRound(playerSelection, computerSelection){
 
-                console.log(computerSelection);
-                console.log(playerSelection);
+                /*console.log(computerSelection);
+                console.log(playerSelection);*/
 
-                if(playerSelection == computerSelection){
+                if (playerSelection == computerSelection) {
                     return "Draw"
                 }
-                
+
                 if (playerSelection == "rock") {
                     if (computerSelection == "scissors") {
                         return "Player wins!"
@@ -49,12 +61,33 @@
                     else
                         return "Computer wins"
                 }
+            }
 
-                
+            function computerPlay(){
+                let possibleMoves = ["rock", "paper", "scissors"]
+                return possibleMoves[Math.floor(Math.random() * 3)];
+            }
+
+            function playerPlay(){
+                let chosenMove;
+                alert("Choose your move (rock, paper or scissors)");
+                return prompt(chosenMove).toLowerCase();   
+            }
+
+            function declareWinner(computerFinalScore, playerFinalScore){
+                if(playerFinalScore > computerFinalScore)
+                {
+                    alert("You win!");
+                }
+                else
+                {
+                    alert("Computer wins!");
+                }
+
             }
             
             
-            console.log(playRound(playerPlay(), computerPlay()));
+            game();
 
             
         </script>
